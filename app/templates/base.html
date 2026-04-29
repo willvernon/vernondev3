@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vernon · Portfolio</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <h1 class="brand">Vernon</h1>
+      <nav class="tabs">
+        <a href="#" class="tab {% if active_tab=='about' %}active{% endif %}"
+           hx-get="/tabs/about" hx-target="#content" hx-swap="innerHTML">About</a>
+        <a href="#" class="tab {% if active_tab=='projects' %}active{% endif %}"
+           hx-get="/tabs/projects" hx-target="#content" hx-swap="innerHTML">Projects</a>
+        <a href="#" class="tab {% if active_tab=='contact' %}active{% endif %}"
+           hx-get="/tabs/contact" hx-target="#content" hx-swap="innerHTML">Contact</a>
+      </nav>
+    </header>
+
+    <main id="content" class="content">
+      {% include 'partials/' + active_tab + '.html' %}
+    </main>
+
+    <footer class="site-footer">
+      <span>© {{ 2025 }} Vernon</span>
+    </footer>
+  </body>
+</html>
